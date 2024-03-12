@@ -1,2 +1,6 @@
-# java
-Java Excercise
+# Java Exercise
+
+### Swagger endpoint
+
+* [Swagger](http://localhost:8080/swagger-ui/index.html)
+

@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: java
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+application:
+  regex:
+    email: '^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$'
+    password: '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$'
+  error:
+    emailFormat: 'El correo no cumple con el formato: aaaaaa@dominio.cl'
+    emailDuplicate: El correo ya registrado
+    passwordFormat: 'La contraseña no cumple con el formato: minimo 8 caracteres, 1 digito, 1 minuscula, 1 mayuscula, 1 caracter espcial y sin espacios'
