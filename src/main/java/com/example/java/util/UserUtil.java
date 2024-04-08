@@ -9,7 +9,8 @@ import java.util.regex.Pattern;
 @Component
 public class UserUtil {
 
-    @Autowired private RegexProperties regexProperties;
+    @Autowired
+    private RegexProperties regexProperties;
 
     public boolean validateMail(String email) {
         return Pattern.compile(regexProperties.getEmail())

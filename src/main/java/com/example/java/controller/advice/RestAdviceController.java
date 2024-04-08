@@ -20,7 +20,7 @@ public class RestAdviceController {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ApiResponse(responseCode = "500", content = {
             @Content(mediaType = "application/json",
-            schema = @Schema(implementation = ErrorResponseDTO.class))
+                    schema = @Schema(implementation = ErrorResponseDTO.class))
     })
     public ResponseEntity<ErrorResponseDTO> handleUncaughtException(
             Exception ex, HttpServletRequest request) {

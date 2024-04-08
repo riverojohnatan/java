@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,9 +40,9 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name="user_phone",
+            name = "user_phone",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "phone_id")}
     )
@@ -73,11 +72,11 @@ public class User {
         this.lastLogin = new Date();
         this.active = Boolean.TRUE;
         this.token = "TOKEN";
-        for(PhoneDTO phoneDTO: registerUserDTO.getPhones()) {
+        for (PhoneDTO phoneDTO : registerUserDTO.getPhones()) {
             this.phones.add(Phone.builder()
-                        .number(phoneDTO.getNumber())
-                        .cityCode(phoneDTO.getCityCode())
-                        .countrycode(phoneDTO.getCountryCode())
+                    .number(phoneDTO.getNumber())
+                    .cityCode(phoneDTO.getCityCode())
+                    .countrycode(phoneDTO.getCountryCode())
                     .build());
         }
     }

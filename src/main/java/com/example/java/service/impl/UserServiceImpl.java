@@ -1,7 +1,6 @@
 package com.example.java.service.impl;
 
 import com.example.java.config.ErrorProperties;
-import com.example.java.config.RegexProperties;
 import com.example.java.dto.RegisterUserDTO;
 import com.example.java.dto.UserDTO;
 import com.example.java.exception.DuplicateUserException;
@@ -18,9 +17,12 @@ import org.springframework.stereotype.Service;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-    @Autowired private UserRepository userRepository;
-    @Autowired private UserUtil userUtil;
-    @Autowired private ErrorProperties errorProperties;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private UserUtil userUtil;
+    @Autowired
+    private ErrorProperties errorProperties;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -35,10 +37,13 @@ public class UserServiceImpl implements UserService {
     }
 
     private void validate(RegisterUserDTO registerUserDTO) {
-        if(!userUtil.validateMail(registerUserDTO.getEmail())) throw new WrongDataException(errorProperties.getEmailFormat());
-        if(!userUtil.validatePassword(registerUserDTO.getPassword())) throw new WrongDataException(errorProperties.getPasswordFormat());
+        if (!userUtil.validateMail(registerUserDTO.getEmail()))
+            throw new WrongDataException(errorProperties.getEmailFormat());
+        if (!userUtil.validatePassword(registerUserDTO.getPassword()))
+            throw new WrongDataException(errorProperties.getPasswordFormat());
 
-        if(this.userRepository.findByEmail(registerUserDTO.getEmail()).isEmpty()) throw new DuplicateUserException(errorProperties.getEmailDuplicate());
+        if (this.userRepository.findByEmail(registerUserDTO.getEmail()).isEmpty())
+            throw new DuplicateUserException(errorProperties.getEmailDuplicate());
     }
 
     private UserDTO translateUserModelToDTO(User user) {

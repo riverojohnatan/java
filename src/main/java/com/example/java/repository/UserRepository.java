@@ -1,8 +1,8 @@
 package com.example.java.repository;
 
 import com.example.java.model.User;
-import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 import java.util.UUID;
